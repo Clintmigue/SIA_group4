@@ -25,14 +25,14 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register()
-    {
-        return view('auth.register',[
-                 'title' => "Registration",
-                 'pagename' => "Registration Form",
-       ]);
+    // public function register()
+    // {
+    //     return view('auth.register',[
+    //              'title' => "Registration",
+    //              'pagename' => "Registration Form",
+    //    ]);
         
-    }
+    // }
 
     /**
      * Store a new user.

@@ -18,6 +18,10 @@ use App\Http\Controllers\Admin\DashboardController;
     //return view('welcome');
 //});
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
@@ -26,6 +30,24 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::controller(DashboardController::class)->group(function() {
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
+Route::prefix('dashboard')->middleware(['auth'])->group(function(){
+    Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
+});
+
+Route::prefix('boardings')->middleware(['auth'])->group(function(){
+    Route::get('/', [App\Http\Controllers\Admin\BoardingsController::class, 'default'])->name('boardings.default');
+    Route::get('/create', [App\Http\Controllers\Admin\BoardingsController::class, 'create'])->name('boardings.create');
+    Route::post('/save', [App\Http\Controllers\Admin\BoardingsController::class, 'save'])->name('boardings.save');
+    Route::get('/view/{id}', [App\Http\Controllers\Admin\BoardingsController::class, 'view'])->name('boardings.view');
+    Route::get('/delete/{id}', [App\Http\Controllers\Admin\BoardingsController::class, 'delete'])->name('boardings.delete');
+    
+    Route::get('/edit/{id}', [App\Http\Controllers\Admin\BoardingsController::class, 'edit'])->name('boardings.edit');
+  Route::post('/update', [App\Http\Controllers\Admin\BoardingsController::class, 'update'])->name('boardings.update');
+  
+});
+Route::prefix('rooms')->middleware(['auth'])->group(function(){
+    Route::get('/', [App\Http\Controllers\Admin\RoomsController::class, 'default'])->name('rooms.default');
+    Route::get('/create', [App\Http\Controllers\Admin\RoomsController::class, 'create'])->name('rooms.create');
+    Route::post('/save', [App\Http\Controllers\Admin\RoomsController::class, 'save'])->name('rooms.save');
+    // Route::get('/view/{id}', [App\Http\Controllers\Admin\RoomsController::class, 'view'])->name('rooms.view');
 });

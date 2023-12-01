@@ -11,19 +11,19 @@
 
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="{{ URL('/') }}">Please register here!</a>
+          <a class="navbar-brand" href="{{ URL('/') }}"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}"></a>
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
-                    </li>
+                    </li> -->
                 @else    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
