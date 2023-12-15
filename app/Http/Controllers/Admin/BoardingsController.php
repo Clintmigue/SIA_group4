@@ -37,17 +37,7 @@ class BoardingsController extends Controller
             'boarding' => $boarding
         ]);
     }
-    public function search(Request $request)
-   {
-    $searchTerm = $request->input('term');
-
-    $boardings = Boarding::where('name_of_bh', 'LIKE', '%' . $searchTerm . '%')
-        ->orWhere('owner', 'LIKE', '%' . $searchTerm . '%')
-        ->get();
-
-    return response()->json($boardings);
-}
-
+    
     public function delete($id)
     {
         $boarding = Boarding::find($id);
@@ -113,11 +103,10 @@ class BoardingsController extends Controller
         }
 
         if ($saveBoardings->save()) {
-            return redirect()->back()->with('success', 'Boarding saved successfully');
-        } else {
-            return redirect()->back()->with('error', 'Failed to save boarding');
-        }
+           return redirect()->route('boardings.default');
     }
+}
+
 
     public function searchtitle(Request $request)
     {

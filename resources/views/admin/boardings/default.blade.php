@@ -19,6 +19,7 @@
                 </span>
               </div>
               <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+
             </div>
           </li>
         </ul>
@@ -36,19 +37,20 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <!-- <th>ID</th> -->
                                     <th>Name of Boarding House</th>
                                     <th>Owner</th>
                                     <th>Description</th>
                                     <th>Address</th>
                                     <th>Contact Number</th>
                                     <th>Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($boardings as $boarding)
                                 <tr>
-                                    <td>{{ $boarding->id }}</td>
+                                    <!-- <td>{{ $boarding->id }}</td> -->
                                     <td>{{ $boarding->name_of_bh }}</td>
                                     <td>{{ $boarding->owner }}</td>
                                     <td>{{ $boarding->description }}</td>
@@ -72,4 +74,5 @@
         </div>
     </div>
 </div>
+
 @endsection
